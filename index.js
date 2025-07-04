@@ -1,8 +1,11 @@
 import express from "express";
 import axios from "axios";
+import dotenv from "dotenv";
+
+dotenv.env.config();
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 
 app.use(express.static("public"));
 app.use(express.urlencoded( {extended: true} ));
@@ -26,6 +29,6 @@ app.get("/", async (req, res) => {
     }
 });
 
-app.listen(port, (req, res) => {
-    console.log(`Server running on port ${port}`);
+app.listen(PORT, (req, res) => {
+    console.log(`Server running on port ${PORT}`);
 });
